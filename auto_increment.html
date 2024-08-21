@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Card Layout</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9f9f9;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .card {
+      margin: 20px;
+      width: calc(33.33% - 20px);
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .text-part {
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .image-part {
+      text-align: center;
+    }
+
+    .image-part img {
+      width: 30%;
+      height: 30% !important;
+      /* object-fit: cover; */
+      border-radius: 10px;
+    }
+
+    /* Responsive design */
+
+    @media (max-width: 768px) {
+      .card {
+        width: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card {
+        width: 100%;
+      }
+    }
+
+    .fonts{
+      font-size: 24px; 
+      font-weight: 900;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+
+      <!-- First card -->
+      <div class="card">
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Order Placed</h5>
+            <div id="counter-100" class="fonts"></div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <div class="image-part">
+            <img src="assests/order-placed-icon.png" class="card-image" alt="Order Placed Icon">
+          </div>
+        </div>
+      </div>
+
+      <!-- second Card -->
+      <div class="card">
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Co2 Reduced</h5>
+           <div id="counter-10000" class="fonts" ></div>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <div class="image-part">
+            <img src="assests/co2-reduced-icon.png" class="card-image" alt="Co2 Reduced Icon">
+
+          </div>
+        </div>
+      </div>
+
+      <!--  Third  Card -->
+      <div class="card">
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Oxygen Carbon Foot Print</h5>
+           <div id="counter-4000" class="fonts" ></div>
+
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <div class="image-part">
+            <img src="assests/oxygen-icon.jpg" class="card-image" alt="Oxygen Icon">
+          </div>
+        </div>
+      </div>
+
+      <!--  Fourth Card -->
+      <div class="card">
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title" >Water Saved</h5>
+            <div id="counter-50000"  class="fonts" ></div>
+
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          </div>
+          <div class="image-part">
+            <img src="assests/water-saved-icon.jpg" class="card-image" alt="Water Saved Icon">
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+
+  <script>
+    (async () => {
+      let counter100 = document.getElementById('counter-100');
+      let counter10000 = document.getElementById('counter-10000');
+      let counter4000 = document.getElementById('counter-4000');
+      let counter50000 = document.getElementById('counter-50000');
+
+      await Promise.all([
+        counterLoop(counter100, 1000, 2000, 100 ),
+        counterLoop(counter10000, 2000, 3000, 100 ),
+        counterLoop(counter4000, 3000, 4000, 100 ),
+        counterLoop(counter50000, 4000, 5000, 100 )
+      ]);
+    })();
+
+    function counterLoop(counter, start, end, delay) {
+      return new Promise(async (resolve) => {
+        for (let i = start; i <= end; i++) {
+          counter.innerText = i;
+          await new Promise(resolve => setTimeout(resolve, delay));
+        }
+        resolve();
+      });
+    }
+  </script>
+
+
+
+</body>
+
+</html>

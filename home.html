@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Grid System with Rows and Columns</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Container for rows */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -10px;
+            margin-left: -10px;
+        }
+
+        /* Common styles for all columns */
+        .col {
+            padding: 10px;
+            background-color: #4A8E5A;
+            color: white;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        /* Responsive column widths based on 12-column grid */
+        .col-1 { flex: 0 0 calc(8.33% - 20px); }
+        .col-2 { flex: 0 0 calc(16.66% - 20px); }
+        .col-3 { flex: 0 0 calc(25% - 20px); }
+        .col-4 { flex: 0 0 calc(33.33% - 20px); }
+        .col-5 { flex: 0 0 calc(41.66% - 20px); }
+        .col-6 { flex: 0 0 calc(50% - 20px); }
+        .col-7 { flex: 0 0 calc(58.33% - 20px); }
+        .col-8 { flex: 0 0 calc(66.66% - 20px); }
+        .col-9 { flex: 0 0 calc(75% - 20px); }
+        .col-10 { flex: 0 0 calc(83.33% - 20px); }
+        .col-11 { flex: 0 0 calc(91.66% - 20px); }
+        .col-12 { flex: 0 0 calc(100% - 20px); }
+
+        /* Responsive layout for smaller screens */
+        @media (max-width: 768px) {
+            .col {
+                flex: 0 0 calc(100% - 20px);
+            }
+        }
+
+        /* Layout for mobile devices */
+        @media (max-width: 480px) {
+            .row {
+                flex-direction: column;
+            }
+
+            .col {
+                flex: 0 0 calc(100% - 20px);
+            }
+
+            /* Specific adjustments for images */
+            .col img {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Responsive Grid System with Rows and Columns</h1>
+
+    <!-- First Row -->
+    <div class="row">
+        <div class="col col-6">
+            <img src="assests/600x600.jpg" alt="">
+        </div>
+        <div class="col col-6"> 
+            <div class="col col-12">
+                <img src="assests/co2-reduced-icon.png" alt=""  >
+
+            </div>
+            <div class="col col-12">
+                <img src="assests/co2-reduced-icon.png" alt=""  >
+            </div>
+        </div>
+        <div class="col col-6">
+            <img src="assests/co2-reduced-icon.png" alt=""  >
+        </div>
+        <div class="col col-6">
+            <img src="assests/co2-reduced-icon.png" alt=""  >
+        </div>
+    </div>
+
+</body>
+</html>

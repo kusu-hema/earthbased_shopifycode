@@ -6,25 +6,10 @@
   <title>Responsive Card Layout</title>
 
   <style>
-    /* * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    } */
-
-    /* body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f9f9f9;
-    } */
-
     .container1 {
       max-width: 1200px;
       margin: 40px auto;
       padding: 20px;
-      /* background-color: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
       text-align: center;
       font-family: Arial, sans-serif;
     }
@@ -63,18 +48,11 @@
       color: #666;
     }
 
-    .image-part {
-      text-align: center;
-    }
-
     .image-part img {
       width: 30%;
-      height: 30% !important;
-      /* object-fit: cover; */
+      height: auto;
       border-radius: 10px;
     }
-
-    /* Responsive design */
 
     @media (max-width: 768px) {
       .card {
@@ -88,18 +66,28 @@
       }
     }
 
-    .fonts{
+    .fonts {
       font-size: 24px; 
       font-weight: 900;
       color: #4A8E5A;
     }
 
+    .read-more-container {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .read-more-container a {
+      /* text-decoration: none; */
+      color: #4A8E5A;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="container1">
+    <h1 class="fonts">Impact Created Daily</h1>
     <div class="row">
-
       <!-- First card -->
       <div class="card">
         <div class="card-body">
@@ -109,91 +97,93 @@
             <p class="card-text">Each order supports a healthier lifestyle while reducing CO2 emissions, minimizing the carbon footprint, and saving water. Your choice makes a positive impact on the planet.</p>
           </div>
           <div class="image-part">
-            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/ordered_placed.png?v=1724314122" class="card-image" alt="Order Placed Icon">
+            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/ordered_placed.png?v=1724314122" alt="Order Placed Icon">
           </div>
         </div>
       </div>
 
-      <!-- second Card -->
+      <!-- Second card -->
       <div class="card">
         <div class="card-body">
           <div class="text-part">
             <h5 class="card-title">Co2 Reduced</h5>
-           <div id="counter-10000" class="fonts" ></div>
+            <div id="counter-co2" class="fonts"></div>
             <p class="card-text">Your choice of plant-based products significantly cuts CO2 emissions, helping to combat climate change and promote a cleaner environment.</p>
           </div>
-          <div class="image-part" style="padding-top: 8%;" >
-            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/co3-removebg-preview.png?v=1724315757" class="card-image" alt="Co2 Reduced Icon"  >
-
+          <div class="image-part">
+            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/co3-removebg-preview.png?v=1724315757" alt="CO2 Reduced Icon">
           </div>
         </div>
       </div>
 
-      <!--  Third  Card -->
+      <!-- Third card -->
       <div class="card">
         <div class="card-body">
           <div class="text-part">
-            <h5 class="card-title">Oxygen Carbon Foot Print</h5>
-           <div id="counter-4000" class="fonts" ></div>
-
+            <h5 class="card-title">Oxygen Carbon Footprint</h5>
+            <div id="counter-oxygen" class="fonts"></div>
             <p class="card-text">By choosing plant-based options, you reduce the carbon footprint and contribute to better air quality, helping to protect our environment.</p>
           </div>
           <div class="image-part">
-            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/oco2.png?v=1724316004" class="card-image" alt="Oxygen Icon">
+            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/oco2.png?v=1724316004" alt="Oxygen Icon">
           </div>
         </div>
       </div>
 
-      <!--  Fourth Card -->
+      <!-- Fourth card -->
       <div class="card">
         <div class="card-body">
           <div class="text-part">
-            <h5 class="card-title" >Water Saved</h5>
-            <div id="counter-50000"  class="fonts" ></div>
-
+            <h5 class="card-title">Water Saved</h5>
+            <div id="counter-water" class="fonts"></div>
             <p class="card-text">Switching to plant-based products conserves vital water resources, making a meaningful difference in sustainability and environmental preservation.</p>
           </div>
           <div class="image-part">
-            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/water_saved.png?v=1724314344" class="card-image" alt="Water Saved Icon">
+            <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/water_saved.png?v=1724314344" alt="Water Saved Icon">
           </div>
         </div>
       </div>
-      
+    </div>
+
+    <!-- Read More Link -->
+    <div class="read-more-container " style="max-width: 80%;">
+      <a href="/pages/how-earthbased-creates-impact-with-each-order">*Read More</a>
     </div>
   </div>
 
-
-
-
-
   <script>
     (async () => {
-      let counter100 = document.getElementById('counter-100');
-      let counter10000 = document.getElementById('counter-10000');
-      let counter4000 = document.getElementById('counter-4000');
-      let counter50000 = document.getElementById('counter-50000');
+      const orderPlacedCounter = document.getElementById('counter-100');
+      const co2ReducedCounter = document.getElementById('counter-co2');
+      const oxygenCounter = document.getElementById('counter-oxygen');
+      const waterSavedCounter = document.getElementById('counter-water');
 
-      await Promise.all([
-        counterLoop(counter100, 1000, 2000, 100 ),
-        counterLoop(counter10000, 2000, 3000, 100 ),
-        counterLoop(counter4000, 3000, 4000, 100 ),
-        counterLoop(counter50000, 4000, 5000, 100 )
-      ]);
+      // Load counters from localStorage
+      const storedOrderCount = localStorage.getItem('orderCount') || 1000;
+      const storedCo2Count = localStorage.getItem('co2Count') || 1000;
+      const storedOxygenCount = localStorage.getItem('oxygenCount') || 1000;
+      const storedWaterCount = localStorage.getItem('waterCount') || 1000;
+
+      orderPlacedCounter.innerText = storedOrderCount;
+      co2ReducedCounter.innerText = `${(storedOrderCount * 4.3).toFixed(2)}'`;
+      oxygenCounter.innerText = `${(storedOrderCount * 4.3).toFixed(2)}'`;
+      waterSavedCounter.innerText = `${(storedOrderCount * 5550).toFixed(0)}'`;
+
+      function updateCounters() {
+        const currentOrderCount = parseInt(orderPlacedCounter.innerText);
+        const newOrderCount = currentOrderCount + 1;
+        orderPlacedCounter.innerText = newOrderCount;
+        localStorage.setItem('orderCount', newOrderCount);
+        co2ReducedCounter.innerText = `${(newOrderCount * 4.3).toFixed(2)}*`;
+        oxygenCounter.innerText = `${(newOrderCount * 4.3).toFixed(2)}*`;
+        waterSavedCounter.innerText = `${(newOrderCount * 5550).toFixed(0)}*`;
+        localStorage.setItem('co2Count', newOrderCount);
+        localStorage.setItem('oxygenCount', newOrderCount);
+        localStorage.setItem('waterCount', newOrderCount);
+      }
+
+      setInterval(updateCounters, 5000);
     })();
-
-    function counterLoop(counter, start, end, delay) {
-      return new Promise(async (resolve) => {
-        for (let i = start; i <= end; i++) {
-          counter.innerText = i;
-          await new Promise(resolve => setTimeout(resolve, delay));
-        }
-        resolve();
-      });
-    }
   </script>
-
-
-
 </body>
-
 </html>

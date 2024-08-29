@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAMSO DIFFERENCE</title>
+    <style>
+        @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+
+        .difference-section {
+            padding: 50px 20px;
+            background: linear-gradient(to bottom, #f9f9f9, #ffffff);
+            text-align: center;
+        }
+
+        .difference-section h2 {
+            font-size: 36px;
+            color: #4A8E5A;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-in-out;
+        }
+
+        .difference-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .difference-block {
+            width: 280px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, #e0f7df, #ffffff);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: fadeInUp 1.2s ease-in-out forwards;
+        }
+
+        .difference-block:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .difference-block h3 {
+            font-size: 22px;
+            color: #4A8E5A;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .difference-block p {
+            font-size: 16px;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .difference-block:hover h3 {
+            color: #396b4a;
+        }
+
+        .difference-block i {
+            font-size: 30px;
+            color: #4A8E5A;
+            margin-bottom: 15px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .difference-block {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="difference-section">
+        <h2>VAMSO DIFFERENCE</h2>
+        <div class="difference-container">
+            <div class="difference-block">
+                <i class="fas fa-globe"></i>
+                <h3>Global Presence</h3>
+                <p>Leading “natural/plant” based animal healthcare in India with presence in 20+ countries.</p>
+            </div>
+
+            <div class="difference-block">
+                <i class="fas fa-industry"></i>
+                <h3>In-house Facilities</h3>
+                <p>In-house manufacturing unit, R&D department, Microbial Lab and QC department.</p>
+            </div>
+
+            <div class="difference-block">
+                <i class="fas fa-people-carry"></i>
+                <h3>Dedicated Exports Team</h3>
+                <p>Dedicated team for exports taking care of regulatory queries and logistics.</p>
+            </div>
+
+            <div class="difference-block">
+                <i class="fas fa-search"></i>
+                <h3>Traceability</h3>
+                <p>Traceability of our entire supply chain. Finished goods tested rigorously for microbial limits, pesticides and heavy metals.</p>
+            </div>
+
+            <div class="difference-block">
+                <i class="fas fa-certificate"></i>
+                <h3>Certified Company</h3>
+                <p>Certified company: FAMI-QS, ISO 9001:2015, DSIR, GMP and FIEO.</p>
+            </div>
+
+            <div class="difference-block">
+                <i class="fas fa-users"></i>
+                <h3>Family-owned Legacy</h3>
+                <p>Family-owned business with legacy of over 50+ years.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

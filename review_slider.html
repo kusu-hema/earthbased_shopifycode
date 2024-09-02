@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Testimonial Slider</title>
   <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
   <style>
     * {
       margin: 0;
@@ -14,112 +15,106 @@
 
     body {
       font-family: Arial, sans-serif;
-      overflow-x: hidden;  
+      overflow-x: hidden;
+      background-color: #EBF3E8;  
     }
 
     .testimonial-container {
       display: flex;
       justify-content: center;
-      align-items: center;
       flex-direction: column;
       width: 100%;
       gap: 20px;
-      padding: 30px 40px;
+      /* padding: 10px 0px  10px; */
+      margin-top: 10px;
       margin: auto;
-      background-color: #EBF3E8;
-      overflow: hidden;  
+      /* background-color: #EBF3E8;   */
+      overflow: hidden;
     }
 
     .testimonial-heading-text {
-      font-size: 24px;
+      font-size: 28px;
       color: #4A8E5A;
       font-weight: bold;
-      text-align: center;
-      margin-bottom: 20px;
+      text-align:  left;
+      padding-left: 2%;
     }
 
     .swiper-container {
+      padding-left: 10px;  
+      padding-right: 90px;  
+
+      /* padding-left: 10px; Slight padding on the left
+      padding-right: 60px; Adds space on the right for the next button */
+      padding-top: 15px;
+      padding-bottom: 15px;
       width: 100%;
       margin: 0 auto;
-      padding: 50px 5px;
-      overflow: hidden; /* Remove any horizontal scrolling from swiper */
+      overflow: hidden;
+    }
+
+    .swiper-wrapper {
+      margin-left: 0; /* Ensures the slides start from the left */
+      padding-right: 50px; /* Adds space between the last card and the next button */
     }
 
     .swiper-slide {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 10px;
+      margin: 0 10px; /* Controls space between cards */
     }
 
     .testimonial-box {
       width: 400px;
-      padding: 20px;
+      padding: 3px;
       border-radius: 10px;
       display: flex;
-      align-items: center;
-      justify-content: center;
       flex-direction: column;
-      background-color: #fff;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      background-color: white;  
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);  
       text-align: center;
+      transition: transform 0.3s ease;
     }
 
-    .testimonial-box img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
+    .testimonial-box:hover {
+      transform: scale(1.05);  
+    }
+
+    .testimonial-text {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      width: 100%;
     }
 
     .testimonial-text h1 {
-      font-size: 20px;
-      color: #333;
+      font-size: 22px;
       font-weight: bold;
-      margin: 10px 0;
+      margin: 15px 0 5px 0;
+      letter-spacing: 1px;
+      grid-column: span 2;  
+      text-align: center;
+    }
+
+    .testimonial-text h6 {
+      font-size: 14px;
+      margin-bottom: 10px;
     }
 
     .testimonial-text p {
       font-size: 16px;
-      color: #777;
+      line-height: 1.6;
     }
 
-    .swiper-pagination {
-      margin-top: 20px;
-    }
+    @media (max-width: 768px) {
+      .testimonial-text {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
 
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: #333;
-      background-color: #fff; /* Change background color for visibility */
-      border-radius: 50%;
-      padding: 10px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      width: 40px;
-      height: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-      font-size: 16px;
-      color: #333;
-    }
-
-    /* Change the Swiper arrow icons */
-    .swiper-button-next::after {
-      content: '\203A'; /* Right arrow symbol */
-    }
-
-    .swiper-button-prev::after {
-      content: '\2039'; /* Left arrow symbol */
-    }
-
-    @media only screen and (max-width: 768px) {
       .testimonial-box {
         width: 100%;
-        flex-direction: column;
       }
 
       .swiper-slide {
@@ -130,55 +125,554 @@
         width: 100%;
       }
     }
+
+    .swiper-pagination {
+      margin-top: 20px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: #EFEFEF;
+      background-color: rgb(142, 134, 134);
+      border-radius: 50%;
+      padding: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      width: 40px;  /* Increased the size slightly for better alignment */
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: background-color 0.3s ease;
+      z-index: 10;
+
+      position: absolute; /* Ensure the position is absolute for better control */
+      /* top: 30%;    */
+      transform: translateY(-40%);  /* Translate it upwards by 50% of its height to perfectly center it */
+    }
+
+    .swiper-button-prev {
+      left: 10px;
+    }
+
+    .swiper-button-next {
+      right: 10px;
+    }
+
+    .hello1 {
+      color: rgb(var(--heading-color));
+      font-family: var(--heading-font-family);
+      font-style: var(--heading-font-style);
+      font-weight: var(--heading-font-weight);
+      line-height: var(--heading-line-height);
+      letter-spacing: var(--heading-letter-spacing);
+      clear: both;
+      margin: 1.5rem 0;
+    }
+
+    .hello2 {
+      color: #4A8E5A;
+      font-family: sans-serif;
+      font-style: normal;
+      /* font-weight: 600; */
+      font-size: 12px ;
+      font-size: small;
+      /* line-height: 1.3px; */
+      /* letter-spacing: 0px; */
+      margin: 1rem 0;
+    }
+
+    .hello3 {
+      font-family: sans-serif;
+      font-style: normal;
+      font-size: 14px;
+    }
+
+    .hello4 {
+      font-family: sans-serif;
+      font-style: normal;
+      line-height: 1.3px;
+      letter-spacing: 0px;
+      margin-top: -3%;
+    }
+
+    .swiper-button-next:after,
+    .swiper-button-prev:after {
+      font-family: swiper-icons;
+      font-size: 15px;
+      text-transform: none !important;
+    }
   </style>
+
 </head>
 <body>
 
 <div class="testimonial-container">
-  <h1 class="testimonial-heading-text">Customer Testimonials</h1>
+  <h1 class="testimonial-heading-text">EarthBased Community</h1>
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
       <!-- Slide 1 -->
       <div class="swiper-slide">
-        <div class="testimonial-box">
-          <img src="https://via.placeholder.com/100" alt="Customer 1">
+        <div class="testimonial-box card-1">
+          <div class="div" style="line-height: 1.2px;">
+            <p class="hello1">Ridhima Nayar</p>
+            <p class="hello3">August 13, 2023</p>
+          </div>    
           <div class="testimonial-text">
-            <h1>John Doe</h1>
-            <p>"Amazing product! Highly recommend."</p>
+            <div>
+              <p class="hello2">Excellent Support!!!</p>
+            </div>
+            <div>
+              <p class="hello2">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                
+                5.0</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <p class="hello4">Had an issue with my order, but customer support resolved it professionally. Truly the best!</p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Slide 2 -->
       <div class="swiper-slide">
-        <div class="testimonial-box">
-          <img src="https://via.placeholder.com/100" alt="Customer 2">
+        <div class="testimonial-box card-2">
+          <div class="div" style="line-height: 1.2px;">
+            <p class="hello1">Alok Mishra</p>
+            <p class="hello3">December 13, 2023</p>
+          </div>    
           <div class="testimonial-text">
-            <h1>Jane Smith</h1>
-            <p>"Great service and fast delivery."</p>
+            <div>
+              <p class="hello2">Thanks Shraddha</p>
+            </div>
+            <div>
+              <p class="hello2">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                
+                5.0</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <p class="hello4">Thanks to Nutritionist Talk and I am at my better verison now </p>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Slide 3 -->
       <div class="swiper-slide">
-        <div class="testimonial-box">
-          <img src="https://via.placeholder.com/100" alt="Customer 3">
+        <div class="testimonial-box card-3">
+          <div class="div" style="line-height: 1.2px;">
+            <p class="hello1">Nainika Jaiswal</p>
+            <p class="hello3">june 21, 2024</p>
+          </div>    
           <div class="testimonial-text">
-            <h1>Mark Wilson</h1>
-            <p>"Very satisfied with my purchase!"</p>
+            <div>
+              <p class="hello2">Kudos Green</p>
+            </div>
+            <div>
+              <p class="hello2">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                
+                5.0</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <p class="hello4">All the Vegan Products are curated here, i can purchase any thing , care-free and Guilt-Free</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Slide 1 -->
+      <div class="swiper-slide">
+        <div class="testimonial-box card-1">
+          <div class="div" style="line-height: 1.2px;">
+            <p class="hello1">Ridhima Nayar</p>
+            <p class="hello3">August 13, 2023</p>
+          </div>    
+          <div class="testimonial-text">
+            <div>
+              <p class="hello2">Excellent Support!!!</p>
+            </div>
+            <div>
+              <p class="hello2">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                
+                5.0</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <p class="hello4">Had an issue with my order, but customer support resolved it professionally. Truly the best!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="swiper-slide">
+        <div class="testimonial-box card-2">
+          <div class="div" style="line-height: 1.2px;">
+            <p class="hello1">Alok Mishra</p>
+            <p class="hello3">December 13, 2023</p>
+          </div>    
+          <div class="testimonial-text">
+            <div>
+              <p class="hello2">Thanks Shraddha</p>
+            </div>
+            <div>
+              <p class="hello2">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                
+                5.0</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <p class="hello4">Thanks to Nutritionist Talk and I am at my better verison now </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="swiper-slide">
+        <div class="testimonial-box card-3">
+          <div class="div" style="line-height: 1.2px;">
+            <p class="hello1">Nainika Jaiswal</p>
+            <p class="hello3">june 21, 2024</p>
+          </div>    
+          <div class="testimonial-text">
+            <div>
+              <p class="hello2">Kudos Green</p>
+            </div>
+            <div>
+              <p class="hello2">
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+
+                <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <linearGradient id="goldenShine" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#FFD700;stop-opacity:1" />
+                      <stop offset="50%" style="stop-color:#FFA500;stop-opacity:1" />
+                      <stop offset="100%" style="stop-color:#FFD700;stop-opacity:1" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M12 2L14.09 8.26L20.18 8.27L15.64 12.14L17.73 18.4L12 14.53L6.27 18.4L8.36 12.14L3.82 8.27L9.91 8.26L12 2Z" fill="url(#goldenShine)"/>
+                </svg>
+                
+                5.0</p>
+            </div>
+            <div style="grid-column: span 2;">
+              <p class="hello4">All the Vegan Products are curated here, i can purchase any thing , care-free and Guilt-Free</p>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
     <!-- Swiper Navigation Arrows -->
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next" style="margin-top: 18px;"></div>
+    <div class="swiper-button-prev" style="margin-top: 18px;"></div>
 
-    <!-- Swiper Pagination -->
-    <div class="swiper-pagination"></div>
   </div>
 </div>
 
@@ -187,8 +681,8 @@
   var mySwiper = new Swiper('.swiper-container', {
     direction: 'horizontal',
     loop: true,
-    slidesPerView: 3,
-    spaceBetween: 30,
+    slidesPerView: 3,  // Show 3 slides at a time
+    spaceBetween: 10,
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
@@ -202,22 +696,22 @@
     },
     breakpoints: {
       320: {
-        slidesPerView: 1,
+        slidesPerView: 1,  // Show 1 slide for mobile screens
         spaceBetween: 10,
       },
       768: {
-        slidesPerView: 1,
-        spaceBetween: 20,
+        slidesPerView: 1,  // Show 1 slide for tablet screens
+        spaceBetween: 10,
       },
       1024: {
-        slidesPerView: 2,
-        spaceBetween: 30,
+        slidesPerView: 3,  // Show 2 slides for medium-sized screens
+        spaceBetween: 10,
       },
       1440: {
-        slidesPerView: 3,
-        spaceBetween: 30,
-      },
-    },
+        slidesPerView: 3,  // Show 3 slides for large screens
+        spaceBetween: 10,
+      }
+    }
   });
 </script>
 

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Responsive Card Layout</title>
+  <style>
+   
+
+    .container2 {
+    max-width: 1200px;
+    width: 100%;
+    /* margin: 40px auto; */
+    padding: 0px 20px 20px 21px;
+    /* text-align: center; */
+    color: #4A8E5A;
+    background-color: #EBF3E8;
+    font-family: Poppins, sans-serif;
+    }
+ 
+    .row1 {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card1 {
+      border-radius: 15px;
+      width: calc(33.333% - 20px);
+      margin-bottom: 20px;
+    }
+
+    .card1 img {
+      width: 100%;
+      border-radius: 12px;
+    }
+
+    /* Popup Styles */
+    .show {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .show.active {
+      display: flex;
+    }
+
+    .img-show {
+      max-width: 100%;
+      max-height: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .img-show img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+      object-fit: contain;
+    }
+
+    .img-show span {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 24px;
+      color: #fff;
+      cursor: pointer;
+      z-index: 1000;
+    }
+
+    @media (min-width: 769px) {
+      .img-show img {
+        width: 500px;
+        height: 500px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .card1 {
+        width: calc(50% - 20px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card1 {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container2">
+    <h3 style="color: #4A8E5A;">Certificates of Contribution</h3>
+    <div class="row1">
+      <!-- First Card -->
+      <div class="card1 popup">
+        <div class="card-body">
+          <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/Hangul_Certificate_page-0001.jpg?v=1723275250" alt="Image 1" class="img-fluid">
+        </div>
+      </div>
+      
+      <!-- Second Card -->
+      <div class="card1 popup">
+        <div class="card-body">
+          <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/Leopard_Certificate_page-0001.jpg?v=1723275256" alt="Image 2" class="img-fluid">
+        </div>
+      </div>
+
+      <!-- Third Card -->
+      <div class="card1 popup">
+        <div class="card-body">
+          <img src="https://cdn.shopify.com/s/files/1/0709/8053/4484/files/Tiger_Certificate_page-0001.jpg?v=1723275262" alt="Image 3" class="img-fluid">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Popup Modal -->
+  <div class="show">
+    <div class="img-show">
+      <span style="color: Red;">×</span>
+      <img src="" alt="Popup Image">
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(function () {
+      "use strict";
+
+      $(".popup img").click(function () {
+        var $src = $(this).attr("src");
+        $(".show img").attr("src", $src);
+        $(".show").addClass("active");
+      });
+
+      $(".show, .show span").click(function () {
+        $(".show").removeClass("active");
+      });
+
+      // Prevent closing when clicking on the image itself
+      $(".img-show img").click(function (e) {
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+</body>
+</html>

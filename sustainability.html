@@ -1,169 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EarthBased Community Efforts</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
-
-
     <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
 
+        .container {
+            width: 100%;
+            margin: auto;
+            overflow: hidden;
+        }
 
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            align-items: center;
+            padding: 20px;
+        }
 
-    /* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-}
+        .hero img {
+            width: 100%;
+            border-radius: 20px;
+            height: auto; /* Maintain aspect ratio */
+        }
 
-.container {
-    width: 100%;
-    margin: auto;
-    overflow: hidden;
-}
+        .hero .text {
+            display: flex;
+            flex-direction: column;
+        }
 
-.hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-items: center;
-    padding: 20px;
-}
+        .content {
+            padding: 20px 0;
+        }
 
-.hero img {
-    width: 100%;
-    border-radius: 20px;
-    height: auto; /* Ensure the image maintains its aspect ratio */
-}
+        .section {
+            margin-bottom: 40px;
+        }
 
-.hero .text {
-    display: flex;
-    flex-direction: column;
-}
+        .section h2 {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
 
-.content {
-    padding: 20px 0;
-}
+        .section p {
+            font-size: 1.1em;
+            line-height: 1.6em;
+        }
 
-.section {
-    margin-bottom: 40px;
-}
+        .logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-.section h2 {
-    font-size: 2em;
-    margin-bottom: 10px;
-}
+        .logos img {
+            width: 100px;
+            margin: 10px;
+            flex: 1 0 150px;
+        }
 
-.section p {
-    font-size: 1.1em;
-    line-height: 1.6em;
-}
+        .waste-management {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
 
-.logos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
+        .waste-management .unit {
+            background: white;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 10px;
+            flex: 1 1 30%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
 
-.logos img {
-    width: 100px;
-    margin: 10px;
-    flex: 1 0 150px;
-}
+        .waste-management img {
+            width: 150px;
+            margin-bottom: 10px;
+        }
 
-.waste-management {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
+        .waste-management h3 {
+            margin-top: 0;
+        }
 
-.waste-management .unit {
-    background: white;
-    border-radius: 5px;
-    padding: 15px;
-    margin: 10px;
-    flex: 1 1 30%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
+        /* Certificates Section */
+        .certificates {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-.waste-management img {
-    width: 150px;
-    margin-bottom: 10px;
-}
+        .certificates a {
+            display: block;
+            margin: 5px;
+            flex: 1 1 30%;
+            text-align: center;
+        }
 
-.waste-management h3 {
-    margin-top: 0;
-}
+        .certificates img {
+            width: 100%;
+            max-width: 350px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            margin: 0 auto;
+        }
 
-/* Certificates Section */
-.certificates {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 20px;
-}
+        .certificates img:hover {
+            transform: scale(1.05);
+        }
 
-.certificates a {
-    display: block;
-    margin: 5px;
-    flex: 1 1 30%;
-    text-align: center;
-}
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
 
-.certificates img {
-    width: 100%;
-    max-width: 350px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    transition: transform 0.3s;
-    margin: 0 auto;
-}
+            .hero img {
+                margin-bottom: 20px;
+            }
 
-.certificates img:hover {
-    transform: scale(1.05);
-}
+            .certificates {
+                flex-direction: column;
+                align-items: center;
+            }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+            .certificates a {
+                flex: 1 1 100%;
+                margin: 5px 0;
+            }
 
-    .hero img {
-        margin-bottom: 20px;
-    }
+            .waste-management .unit {
+                flex: 1 1 100%;
+                margin: 5px 0;
+            }
+        }
 
-    .certificates {
-        flex-direction: column;
-        align-items: center;
-    }
+        @media (max-width: 480px) {
+            .img-responsive {
+                width: 100%;
+            }
+        }
 
-    .certificates a {
-        flex: 1 1 100%;
-        margin: 5px 0;
-    }
+        /* Partner Section */
+        #partner-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+            gap: 20px; /* Adjust spacing as needed */
+        }
 
-    .waste-management .unit {
-        flex: 1 1 100%;
-        margin: 5px 0;
-    }
-}
+        #partner-section .image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
 
-@media (max-width: 480px) {
-    .img-responsive {
-        width: 100%;
-    }
-}
-
+        @media (max-width: 768px) {
+            #partner-section {
+                grid-template-columns: 1fr; /* Stack columns on small screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -180,35 +192,6 @@ body {
             </div>
         </div>
 
-
-
-        <style>
-            #partner-section {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr); /* Two equal columns */
-                gap: 20px; /* Adjust spacing as needed */
-            }
-            #partner-section .image img {
-                width: 100%;
-                height: auto;
-                display: block;
-            }
-            @media (max-width: 768px) {
-                #partner-section {
-                    grid-template-columns: 1fr; /* Stack columns on small screens */
-                }
-            }
-        </style>
-
- 
-        
-
-
-
-        
-
-
-    
         <div class="content">
             <div class="section">
                 <h2>Certificates of Contribution</h2>
@@ -233,35 +216,30 @@ body {
                 <div class="waste-management">
                     <div class="unit">
                         <img src="https://scrapq.com/assets/scrapq.png" alt="ScrapQ Logo">
-                      
                         <p>Based in Hyderabad, ScrapQ offers instant payment for waste and ensures responsible recycling. Reach them via missed call, message, or their app.</p>
                         <p><strong>Contact:</strong> 90 30 72 72 77</p>
                         <p><strong>Location:</strong> Hyderabad</p>
                     </div>
                     <div class="unit">
                         <img src="https://crapbin.com/img/Crapbin_Logo_Desktop.svg" alt="Crap Bin Logo">
-                        
                         <p>Located in Hyderabad, Crap Bin allows you to sell or donate scrap and provides upcycled products on their website.</p>
                         <p><strong>Contact:</strong> 7799996096</p>
                         <p><strong>Location:</strong> Hyderabad</p>
                     </div>
                     <div class="unit">
-                        <img src="https://cdn.timesofabetterindia.com/uploads/partners/f-NWKZ0iTNnwSjFc27jcotE3Y8lLiFNa-metaTG9nbyAyXy5qcGc=-.jpg">
-                        
+                        <img src="https://cdn.timesofabetterindia.com/uploads/partners/f-NWKZ0iTNnwSjFc27jcotE3Y8lLiFNa-metaTG9nbyAyXy5qcGc=-.jpg" alt="Bintix Logo">
                         <p>Operating in Chennai, Bintix offers doorstep collection of sorted waste with convenient pick-up scheduling.</p>
                         <p><strong>Contact:</strong> support@bintix.com</p>
                         <p><strong>Location:</strong> Chennai</p>
                     </div>
                     <div class="unit">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQQfHyTMrNZkz539m6JR9TWd_lMT93Y-3mVQ&s" alt="Vital Waste Logo">
-                        
                         <p>Headquartered in Kolkata, Vital Waste is a door-to-door collection service that recycles all types of household dry waste.</p>
                         <p><strong>Contact:</strong> +91 98745 17244</p>
                         <p><strong>Location:</strong> Kolkata</p>
                     </div>
                     <div class="unit">
                         <img src="https://i0.wp.com/saahaszerowaste.com/wp-content/uploads/2022/02/Brand-logo.jpg?fit=1920%2C1920&ssl=1" alt="Saahas Logo">
-                        
                         <p>Bangalore-based Saahas provides holistic waste management services and supports resource recovery and recycling initiatives.</p>
                         <p><strong>Contact:</strong> info@saahas.org</p>
                         <p><strong>Location:</strong> Bangalore</p>

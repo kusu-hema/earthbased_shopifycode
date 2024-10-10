@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Responsive Card Layout</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Poppins, sans-serif !important;
+      color: #333;
+      background-color: #EBF3E8;
+    }
+
+    .container1 {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .row1 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* Display 3 cards in a row */
+      gap: 20px;
+      justify-items: center;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      width: 100%; /* Ensure cards take full space of the column */
+      position: relative;
+      cursor: pointer; /* Hand cursor on hover */
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 16px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .card-body {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .text-part {
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 16px;
+      color: #4A8E5A;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+
+    .card-title1 {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 30px;
+      color: #4A8E5A;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+
+    .card-text {
+      font-size: 16px;
+      color: #666;
+      font-weight: 600;
+    }
+
+    /* Button for action */
+    .card-action {
+      display: flex;
+      justify-content: center;
+    }
+
+    .card-action a {
+      text-decoration: none;
+      color: #fff;
+      background-color: #4A8E5A;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      z-index: 2; /* Ensure button stays on top */
+      position: relative;
+    }
+
+    .card-action a:hover {
+      background-color: #367f4a;
+    }
+
+    /* Overlay a link over the whole card (except the button) */
+    .card-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    .card-link:hover {
+      cursor: pointer;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 1200px) {
+      .row1 {
+        grid-template-columns: repeat(3, 1fr) !important; /* 3 cards per row for medium screens */
+      }
+    }
+
+    @media (max-width: 992px) {
+      .row1 {
+        grid-template-columns: repeat(2, 1fr) !important; /* 2 cards per row for tablets */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .row1 {
+        grid-template-columns: repeat(2, 1fr) !important; /* Single column for mobile devices */
+      }
+    }
+  </style>
+  
+</head>
+<body>
+
+  <div class="container1">
+    <div class="row1">
+
+
+      <!-- First Card -->
+      <div class="card" id="card1">
+        <a href="https://earthbased.in/blogs/what-is-veganism/eco-friendly-smiles-why-bamboo-toothbrushes-are-the-future-of-oral-care" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h6 class="card-title">Vegan Vichaar</h6>
+            <p class="card-text">Why Bamboo Toothbrushes Are the Future of Oral Care</p>
+            <h5 class="card-title">Oct 08, 2024 Sree Nath Rajasekaran</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/eco-friendly-smiles-why-bamboo-toothbrushes-are-the-future-of-oral-care">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second Card -->
+      <div class="card" id="card2">
+        <a href="https://earthbased.in/blogs/what-is-veganism/eco-friendly-menstrual-care-a-sustainable-choice-for-you-and-the-earth" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">A Sustainable Choice for You and the Earth</p>
+            <h5 class="card-title">Oct  07, 2024 Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/eco-friendly-menstrual-care-a-sustainable-choice-for-you-and-the-earth">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Card -->
+      <div class="card" id="card3">
+        <a href="https://earthbased.in/blogs/what-is-veganism/why-go-vegan-exploring-the-benefits-of-a-plant-based-cruelty-free-lifestyle" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Why Go Vegan? Exploring the Benefits of a Plant-Based, Cruelty-Free Lifestyle</p>
+            <h5 class="card-title">Aug 26, 2024 Sree Nath Rajasekaran</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/why-go-vegan-exploring-the-benefits-of-a-plant-based-cruelty-free-lifestyle">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fourth Card -->
+      <div class="card" id="card4">
+        <a href="https://earthbased.in/blogs/what-is-veganism/vegan-diet-plan-to-weight-loss-7-days-meal-plan" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Vegan Diet Plan to Weight Loss - 7 Days Meal-Plan</p>
+            <h5 class="card-title">Aug 23, 2024  Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/vegan-diet-plan-to-weight-loss-7-days-meal-plan">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fifth Card -->
+      <div class="card" id="card5">
+        <a href="https://earthbased.in/blogs/what-is-veganism/what-is-veganism-unraveling-the-plant-based-lifestyle" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">What is Veganism? Unraveling the Plant-Based Lifestyle</p>
+            <h5 class="card-title">Dec 25, 2023 Sree Nath Rajasekaran</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/what-is-veganism-unraveling-the-plant-based-lifestyle">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sixth Card -->
+      <div class="card" id="card6">
+        <a href="https://earthbased.in/blogs/what-is-veganism/vegan-pregnancy-nurturing-life-plant-based-style" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Vegan Pregnancy: Nurturing Life, Plant-Based Style</p>
+            <h5 class="card-title">Dec 18, 2023 Sree Nath Rajasekaran</h5>
+          </div>
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/vegan-pregnancy-nurturing-life-plant-based-style">Read More</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- seventh Card -->
+      <div class="card" id="card1">
+        <a href="https://earthbased.in/blogs/what-is-veganism/milk-intolerance-discover-the-creamy-world-of-alternatives" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h6 class="card-title">Vegan Vichaar</h6>
+            <p class="card-text">Milk Intolerance: Discover the Creamy World of Alternatives</p>
+            <h5 class="card-title">Dec 11, 2023 Sree Nath Rajasekaran</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/milk-intolerance-discover-the-creamy-world-of-alternatives">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- eight Card -->
+      <div class="card" id="card2">
+        <a href="https://earthbased.in/blogs/what-is-veganism/veganism-a-mindful-lifestyle-for-everyone" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Veganism: A Mindful Lifestyle for Everyone</p>
+            <h5 class="card-title">Dec 09, 2023 Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/veganism-a-mindful-lifestyle-for-everyone">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- nineth Card -->
+      <div class="card" id="card3">
+        <a href="https://earthbased.in/blogs/what-is-veganism/veganism-s-positive-impact-on-the-ecosystem-lessons-from-covid-19" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Veganism’s Positive Impact on the Ecosystem: Lessons from COVID-19</p>
+            <h5 class="card-title">Dec 07, 2023 Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/veganism-s-positive-impact-on-the-ecosystem-lessons-from-covid-19">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ten Card -->
+      <div class="card" id="card4">
+        <a href="https://earthbased.in/blogs/what-is-veganism/embracing-vegan-living-one-switch-at-a-time-with-vegan-vichar" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Embracing Vegan Living: One Switch at a Time with Vegan Vichar</p>
+            <h5 class="card-title">Dec 05, 2023  Hema</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/embracing-vegan-living-one-switch-at-a-time-with-vegan-vichar">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11th Card -->
+      <div class="card" id="card5">
+        <a href="https://earthbased.in/blogs/what-is-veganism/does-vegan-diet-increase-life-expectancy" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Does Vegan Diet Increase Life Expectancy?</p>
+            <h5 class="card-title">Dec 04, 2023 Sree Nath Rajasekaran</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/does-vegan-diet-increase-life-expectancy">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12th Card -->
+      <div class="card" id="card6">
+        <a href="https://earthbased.in/blogs/what-is-veganism/veganism-in-indian-culture" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Veganism in Indian Culture</p>
+            <h5 class="card-title">Nov 28, 2023 Sree Nath Rajasekaran</h5>
+          </div>
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/veganism-in-indian-culture">Read More</a>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- 13th Card -->
+      <div class="card" id="card1">
+        <a href="https://earthbased.in/blogs/what-is-veganism/vegan-desserts" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h6 class="card-title">Vegan Vichaar</h6>
+            <p class="card-text">Vegan Desserts</p>
+            <h5 class="card-title">Nov 27, 2023  Hema</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/vegan-desserts">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 14th Card -->
+      <div class="card" id="card2">
+        <a href="https://earthbased.in/blogs/what-is-veganism/is-it-hard-to-find-vegan-options-in-restaurants" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Is it Hard to Find Vegan Options in Restaurants?</p>
+            <h5 class="card-title">Nov 25, 2023 Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/is-it-hard-to-find-vegan-options-in-restaurants">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 15th Card -->
+      <div class="card" id="card3">
+        <a href="https://earthbased.in/blogs/news/milk-alternatives-for-lactose-intolerance" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Milk Alternatives for Lactose Intolerance</p>
+            <h5 class="card-title">Nov 20, 2023  Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/news/milk-alternatives-for-lactose-intolerance">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 16th Card -->
+      <div class="card" id="card4">
+        <a href="https://earthbased.in/blogs/what-is-veganism/omega-3-in-a-vegan-diet" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Omega-3 in a Vegan Diet</p>
+            <h5 class="card-title">Nov 17, 2023  Hema</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/omega-3-in-a-vegan-diet">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 17th Card -->
+      <div class="card" id="card5">
+        <a href="https://earthbased.in/blogs/what-is-veganism/veganism-and-protein" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Veganism and Protein</p>
+            <h5 class="card-title">Nov 14, 2023  Hema</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/veganism-and-protein">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!--18th Card -->
+      <div class="card" id="card6">
+        <a href="https://earthbased.in/blogs/what-is-veganism/vegan-skincare" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Vegan Skincare</p>
+            <h5 class="card-title">Nov 11, 2023  Hema</h5>
+          </div>
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/vegan-skincare">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!--  19th Card -->
+      <div class="card" id="card1">
+        <a href="https://earthbased.in/blogs/what-is-veganism/does-vegan-diet-increase-life-expectancy-1" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h6 class="card-title">Vegan Vichaar</h6>
+            <p class="card-text">Does Vegan Diet increase life expectancy?</p>
+            <h5 class="card-title">Nov 10, 2023  Hema</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/does-vegan-diet-increase-life-expectancy-1">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 20th Card -->
+      <div class="card" id="card2">
+        <a href="https://earthbased.in/blogs/what-is-veganism/vegan-diet-during-pregnancy" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Vegan Diet During Pregnancy</p>
+            <h5 class="card-title">Nov 09, 2023  Hema</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/vegan-diet-during-pregnancy">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 21th Card -->
+      <div class="card" id="card3">
+        <a href="https://earthbased.in/blogs/what-is-veganism/is-veganism-child-safe" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Is Veganism Child Safe?</p>
+            <h5 class="card-title">Nov 07, 2023  Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/is-veganism-child-safe">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 22th  Card -->
+      <div class="card" id="card4">
+        <a href="https://earthbased.in/blogs/what-is-veganism/is-veganism-environmentally-friendly" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Is Veganism Environmentally Friendly?</p>
+            <h5 class="card-title">Nov 05, 2023  Dileep Kumar</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/is-veganism-environmentally-friendly">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!--  23th Card -->
+      <div class="card" id="card5">
+        <a href="https://earthbased.in/blogs/what-is-veganism/why-is-veganism-important" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">Why is Veganism Important?</p>
+            <h5 class="card-title">Nov 04, 2023  Hema</h5>
+          </div> 
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/why-is-veganism-important">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 24th Card -->
+      <div class="card" id="card6">
+        <a href="https://earthbased.in/blogs/what-is-veganism/what-is-veganism" class="card-link"></a>
+        <div class="card-body">
+          <div class="text-part">
+            <h5 class="card-title">Vegan Vichaar</h5>
+            <p class="card-text">What is Veganism?</p>
+            <h5 class="card-title">Nov 04, 2023  Hema</h5>
+          </div>
+          <div class="card-action">
+            <a href="https://earthbased.in/blogs/what-is-veganism/what-is-veganism">Read More</a>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+</body>
+</html>
